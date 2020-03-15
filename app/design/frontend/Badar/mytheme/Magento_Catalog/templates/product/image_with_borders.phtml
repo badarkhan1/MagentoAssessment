@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+	$qty = $StockState->getStockQty($block->getProductId());    
+  
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */ ?>
+
+<span class="product-image-container"
+      style="width:<?= $block->escapeHtmlAttr($block->getWidth()) ?>px;">
+
+      <p>
+      		<?= ($qty >= 100) ? $qty . " Sold" : $qty . " Left" ?>
+      </p>
+
+    <span class="product-image-wrapper"
+          style="padding-bottom: <?= ($block->getRatio() * 100) ?>%;">
+        <img class="<?= $block->escapeHtmlAttr($block->getClass()) ?>"
+            <?= $block->escapeHtmlAttr($block->getCustomAttributes()) ?>
+            src="<?= $block->escapeUrl($block->getImageUrl()) ?>"
+            max-width="<?= $block->escapeHtmlAttr($block->getWidth()) ?>"
+            max-height="<?= $block->escapeHtmlAttr($block->getHeight()) ?>"
+            alt="<?= /* @noEscape */ $block->stripTags($block->getLabel(), null, true) ?>"/></span>
+</span>
