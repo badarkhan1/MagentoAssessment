@@ -9,7 +9,13 @@ The first step is to download the project to your local computer, which can be d
 git clone https://github.com/badarkhan1/MagentoAssessment.git
 ```
 
-# 2. Setup the environment file
+# 2. Import the database
+The root folder of the project contains the sql dump file for the project's database with the name "magentodb.sql", download and import the database to your locahost server.
+```
+magentodb.sql
+```
+
+# 3. Setup the environment file
 Go to app/etc and create the env.php file and copy paste the following code, which also contains the database information.
 ```
 <?php
@@ -98,29 +104,29 @@ Database name: magentodb
 Username: root
 Password:
 ```
-# 3. Disable custom modules
+# 4. Disable custom modules
 In this step we must disable all of our custom modules present in app/code and in app/design. In our case move the module app/design/frontend/Badar to an external localtion.
 
-# 4. Install setup
+# 5. Install setup
 From the project's root directory run the following command to install the setup.
 ```
 php bin/magento setup:install --admin-user="badarnadeem" --admin-password="zmalqp120" --admin-email="badarnadeem0001@gmail.com" --admin-firstname="badar" --admin-lastname="nadeem"
 ```
 
-# 5. Upgrade
+# 6. Upgrade
 From the project's root directory run
 ```
 php bin/magento setup:upgrade
 ```
 
-# 6. Compile
+# 7. Compile
 ```
 php bin/magento setup:di:compile
 ```
 
-Move all the custom modules back to their respective locations and repeat steps 5 and 6.
+Move all the custom modules back to their respective locations and repeat steps 6 and 7.
 
-# 7. Run the application.
+# 8. Run the application.
 
 ```
 Store address: http://127.0.0.1/magento/
